@@ -64,7 +64,6 @@ export const CodeBlockPage: React.FC = () => {
     }, [socket]);
 
     useEffect(() => {
-        socket.emit('change_code', { code: codeBlockCode }, codeID)
         // make code highlight on every change
         if (codeRef.current) {
             hljs.highlightElement(codeRef.current);
@@ -75,7 +74,9 @@ export const CodeBlockPage: React.FC = () => {
     }, [codeBlockCode]);
 
     const handleTextChange = (e: any) => {
-        setCodeBlockCode(e.target.value);
+        const updatedCode = e.target.value;
+        socket.emit('change_code', { code: updatedCode }, codeID)
+        setCodeBlockCode(updatedCode);
     }
 
     // leave room when user leave codeBlock page
