@@ -7,7 +7,7 @@ interface ICodeBlock {
     code: string
 }
 
-const getAllCodeBlocks = axios.get('http://localhost:8000/codeBlocks');
+const getAllCodeBlocks = axios.get('https://mentoring-server.onrender.com/codeBlocks');
 const { data } = await getAllCodeBlocks;
 
 export const codeBlocksSlicer = createSlice({

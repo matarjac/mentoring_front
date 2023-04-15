@@ -17,7 +17,7 @@ import javascript from 'highlight.js/lib/languages/javascript';
 import "highlight.js/styles/github.css";
 import io from 'socket.io-client';
 
-const socket = io('http://localhost:8000');
+const socket = io('https://mentoring-server.onrender.com');
 
 export const CodeBlockPage: React.FC = () => {
 
