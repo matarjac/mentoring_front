@@ -69,8 +69,6 @@ export const CodeBlockPage: React.FC = () => {
             hljs.highlightElement(codeRef.current);
         }
 
-        // Updates redux store with updated code
-        dispatch(updateCode({ codeID, code: codeBlockCode }));
     }, [codeBlockCode]);
 
     const handleTextChange = (e: any) => {
@@ -79,9 +77,10 @@ export const CodeBlockPage: React.FC = () => {
         setCodeBlockCode(updatedCode);
     }
 
-    // leave room when user leave codeBlock page
-    // (going back to lobby to choose different codeBlock)
     window.onpopstate = () => {
+        // Updates redux store with updated code when user return to lobby page
+        dispatch(updateCode({ codeID, code: codeBlockCode }));
+        // leave socket room when user exit codeBlock page
         socket.emit('leave_room', codeID);
     }
 
