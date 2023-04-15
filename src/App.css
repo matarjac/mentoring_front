@@ -11,4 +11,6 @@
 body {
   background-color: rgb(32, 38, 48);
   font-family: "Roboto", sans-serif;
+  width: 100vw;
+  height: 100vh;
 }
